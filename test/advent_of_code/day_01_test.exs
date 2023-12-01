@@ -16,11 +16,29 @@ defmodule AdventOfCode.Day01Test do
     assert result === 142
   end
 
-  @tag :skip
   test "part2" do
-    input = nil
+    input = """
+    two1nine
+    eightwothree
+    abcone2threexyz
+    xtwone3four
+    4nineeightseven2
+    zoneight234
+    7pqrstsixteen
+    """
+
     result = part2(input)
 
-    assert result
+    assert result === 281
+  end
+
+  test "part2 edgecases" do
+    input = """
+    12oneightfve
+    """
+
+    result = part2(input)
+
+    assert result === 18
   end
 end
