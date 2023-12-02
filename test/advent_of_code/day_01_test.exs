@@ -41,4 +41,14 @@ defmodule AdventOfCode.Day01Test do
 
     assert result === 18
   end
+
+  test "empty input returns 0" do
+    empty = ""
+
+    part1_result = part1(empty)
+    part2_result = part2(empty)
+
+    assert part1_result === 0
+    assert part2_result === 0
+  end
 end
