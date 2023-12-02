@@ -6,7 +6,37 @@ defmodule AdventOfCode.Day01 do
     |> Enum.sum()
   end
 
-  def part2(_args) do
+  def part2(args) do
+    args
+    |> String.split(~r/\n/, trim: true)
+    |> Enum.map(&first_and_last_number/1)
+    |> Enum.sum()
+  end
+
+  defp first_and_last_number(string) do
+    number_regex = ~r/(?=(one|two|three|four|five|six|seven|eight|nine|[0-9]))/
+
+    matches = Regex.scan(number_regex, string)
+    [_, first] = List.first(matches)
+    [_, last] = List.last(matches)
+
+    number_list_to_number([first, last])
+  end
+
+  defp number_list_to_number(list) do
+    list
+    |> Enum.map(&words_to_numbers/1)
+    |> List.to_string()
+    |> String.to_integer()
+  end
+
+  defp words_to_numbers(string) do
+    numbers = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+
+    String.replace(string, numbers, fn x ->
+      (Enum.find_index(numbers, &(&1 == x)) + 1)
+      |> Integer.to_string()
+    end)
   end
 
   # TODO: doesn't work if the string has no numbers
