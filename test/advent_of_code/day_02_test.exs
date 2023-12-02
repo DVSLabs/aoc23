@@ -3,6 +3,14 @@ defmodule AdventOfCode.Day02Test do
 
   import AdventOfCode.Day02
 
+  @input """
+  Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
+  Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue
+  Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red
+  Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red
+  Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green
+  """
+
   @constraint %{
     "red" => 12,
     "green" => 13,
@@ -16,15 +24,7 @@ defmodule AdventOfCode.Day02Test do
   @invalid_game ["2": @invalid_blocks]
 
   test "part1" do
-    input = """
-    Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
-    Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue
-    Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red
-    Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red
-    Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green
-    """
-
-    result = part1(input, @constraint)
+    result = part1(@input, @constraint)
 
     assert result === 8
   end
@@ -45,11 +45,9 @@ defmodule AdventOfCode.Day02Test do
     assert sum_game_ids([@valid_game, @valid_game]) === 2
   end
 
-  @tag :skip
   test "part2" do
-    input = nil
-    result = part2(input)
+    result = part2(@input)
 
-    assert result
+    assert result === 2286
   end
 end
